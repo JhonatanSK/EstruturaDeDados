@@ -1,3 +1,4 @@
+
 import javax.swing.JOptionPane;
 
 // 42, 44, 49 e 50.
@@ -15,7 +16,7 @@ public class ExerciciosTerceiraEntrega {
 			int pergunta = Integer.parseInt(JOptionPane.showInputDialog("Digite qual exercicio você deseja utilizar: \n "
 					+ "Exercicio 42 - Busca binaria em vetor do tipo char. \n "
 					+ "Exercicio 44 - Busca binaria em vetor do tipo int de 15 elementos. \n "
-					+ "Exercicio 49 - Busca binaria recursiva em vetor não ordenado. \n "
+					+ "Exercicio 49 - Busca binaria recursiva pelo menor indice do vetor. \n "
 					+ "Exercicio 50 - Busca binaria recursiva em vetor do tipo char ordenado decrescente. \n "
 					+ "Digite '0' para sair\""));
 			if (pergunta == 42) {
@@ -31,10 +32,10 @@ public class ExerciciosTerceiraEntrega {
 				JOptionPane.showMessageDialog(null,"O valor: ("+ posicao +") inserido no vetor está na posição: " + exercicio44(vetor, posicao));
 			}
 			else if (pergunta == 49) {
-				int [] vetor = criarVetorSemOrdenar(10);
+				int [] vetor = criarVetor(10);
 				
 				int i = Integer.parseInt(JOptionPane.showInputDialog("Digite o valor a ser buscado: "));
-				JOptionPane.showMessageDialog(null, "O valor: ("+ i +") está na posição: " + exercicio49(vetor, 0, vetor.length-1, i));
+				JOptionPane.showMessageDialog(null, "O valor: ("+ i +") está na posição: " + exercicio49(vetor, 0, vetor.length-1,i));
 			}
 			else if (pergunta == 50) {
 				char [] vetor = criarVetorChar(0);
@@ -162,7 +163,7 @@ public class ExerciciosTerceiraEntrega {
 			}
 		}
 		
-		return -1;
+		return vetor.length;
 	}
 	
 	
@@ -195,12 +196,17 @@ public class ExerciciosTerceiraEntrega {
 		if(baixo <= alto) {
 			meio = (baixo+alto)/2;
 			if(posicao < vetor[meio]) {
-				return exercicio49(vetor, baixo, meio-1, posicao);
+				return exercicio49(vetor, baixo, meio-1,posicao);
 			}
 			else if (posicao > vetor[meio]) {
 				return exercicio49(vetor, meio+1, alto, posicao);
 			}
-			else return meio;
+			else if (posicao == vetor[meio]) {
+				if(posicao == vetor[meio-1]) {
+					return exercicio49(vetor, baixo, alto-1, posicao);
+				}
+				return meio;
+			}
 		}
 		return -1;
 	}
@@ -216,7 +222,12 @@ public class ExerciciosTerceiraEntrega {
 			else if (posicao < vetor[meio]) {
 				return exercicio50(vetor, meio+1, alto, posicao);
 			}
-			else return meio;
+			else if (posicao == vetor[meio]) {
+				if(posicao == vetor[meio+1]) {
+					return exercicio50(vetor, baixo, alto+1, posicao);
+				}
+				return meio;
+			}
 		}
 		return -1;
 	}
