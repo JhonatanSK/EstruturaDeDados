@@ -173,6 +173,40 @@ public class ExerciciosQuintaEntrega {
 		return -1;
 	}
 
+   //Exercicio 74
+   public static char[] ordenacaoQuickSort(char vetor[], int baixo, int alto) {
+		int p,b,a;
+		char pivot;
+		
+		b = baixo;
+		a = alto;
+		pivot = vetor[baixo];
+		while(baixo < alto) {
+			while((vetor[alto] >= pivot) && (baixo < alto)) { 
+				alto--;
+			}
+				if(baixo != alto) {
+					vetor[baixo] = vetor[alto];
+					baixo++;
+				}
+
+			while((vetor[baixo] <= pivot) && (baixo < alto)) {
+				baixo++;
+			}
+				if(baixo != alto) {
+					vetor[alto] = vetor[baixo];
+					alto--;
+				}
+		}
+		vetor[baixo] = pivot;
+		p = baixo;
+		baixo = b;
+		alto = a;
+		if(baixo < p) ordenacaoQuickSort(vetor, baixo, p-1);
+		if(alto > p) ordenacaoQuickSort(vetor, p+1, alto);
+		
+		return vetor;
+	}
 }
 
 
