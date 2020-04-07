@@ -207,6 +207,52 @@ public class ExerciciosQuintaEntrega {
 		
 		return vetor;
 	}
+   
+   //Exercicio 76
+   public static double[] criarVetorDouble(int a){
+		double [] vetor = new double[a];
+		      
+		for (int i = 0; i < a; i++) {
+			double valores = Double.parseDouble(JOptionPane.showInputDialog("Digite um valor para ser inserido no vetor"));
+		    vetor[i] = valores;
+		    	  
+		}
+		return vetor;
+	}
+	
+	public static double[] ordenacaoQuickSortDouble(double vetor[], int baixo, int alto) {
+		int p,b,a;
+		double pivot;
+		
+		b = baixo;
+		a = alto;
+		pivot = vetor[baixo];
+		while(baixo < alto) {
+			while((vetor[alto] <= pivot) && (baixo < alto)) { 
+				alto--;
+			}
+				if(baixo != alto) {
+					vetor[baixo] = vetor[alto];
+					baixo++;
+				}
+
+			while((vetor[baixo] >= pivot) && (baixo < alto)) {
+				baixo++;
+			}
+				if(baixo != alto) {
+					vetor[alto] = vetor[baixo];
+					alto--;
+				}
+		}
+		vetor[baixo] = pivot;
+		p = baixo;
+		baixo = b;
+		alto = a;
+		if(baixo < p) ordenacaoQuickSortDouble(vetor, baixo, p-1);
+		if(alto > p) ordenacaoQuickSortDouble(vetor, p+1, alto);
+		
+		return vetor;
+	}
 }
 
 
