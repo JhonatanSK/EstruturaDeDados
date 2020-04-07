@@ -90,14 +90,8 @@ public class ExerciciosQuintaEntrega {
 			}
 		}
 	}
-
-	/*
-	 * 70) Elaborar um programa, em linguagem Java, capaz de receber, via teclado e
-	 * em ordem aleatória, o conteúdo de cada um dos elementos de um vetor do tipo
-	 * int, de tamanho variável, também digitado, executar a ordenação crescente do
-	 * mesmo e apresentar o vetor ordenado em tela. Utilizar um método de ordenação
-	 * por inserção.
-	 */
+   
+   //Exercicio 70
 	public static int[] criarVetor(int a) {
 		int[] vetor = new int[a];
 
@@ -123,7 +117,61 @@ public class ExerciciosQuintaEntrega {
 		}
 		return vetor;
 	}
+   
+   //Exercicio 73
+   public static char[] criarVetorChar(int tipo, int a) {
+		char[] vetor = new char[a];
+		char[] vetorOrdenado = new char[a];
 
+		for (int i = 0; i < a; i++) {
+			String valores = JOptionPane.showInputDialog("Digite uma letra para ser inserida no vetor");
+			char valor = valores.charAt(0);
+			vetor[i] = valor;
+		}
+		if (tipo == 0) {
+			vetorOrdenado = ordenarVetorInsercao(vetor);
+			return vetorOrdenado;
+		}
+		
+		 else if (tipo == 1) {
+			 vetorOrdenado = ordenacaoQuickSort(vetor, 0, a-1);
+			 return vetorOrdenado;
+		 }
+		 
+		return vetorOrdenado;
+	}
+
+	public static char[] ordenarVetorInsercao(char vetor[]) {
+		int a, b;
+		char t;
+
+		for (a = 1; a < vetor.length; a++) {
+			t = vetor[a];
+			b = a - 1;
+			while (b >= 0 && t < vetor[b]) {
+				vetor[b + 1] = vetor[b];
+				b--;
+			}
+			vetor[b + 1] = t;
+		}
+		return vetor;
+	}
+
+	public static int exercicio73(char[] vetor, int baixo, int alto, char posicao) {
+		int meio;
+
+		if (baixo <= alto) {
+			meio = (baixo + alto) / 2;
+			if (posicao < vetor[meio]) {
+				return exercicio73(vetor, baixo, meio - 1, posicao);
+			} else if (posicao > vetor[meio]) {
+				return exercicio73(vetor, meio + 1, alto, posicao);
+			} else {
+				return meio;
+			}
+		}
+		return -1;
+	}
 
 }
 
