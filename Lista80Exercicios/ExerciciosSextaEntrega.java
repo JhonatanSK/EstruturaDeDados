@@ -147,4 +147,77 @@ public class ExerciciosSextaEntrega {
         }  
     }  
 
+
+	/*
+	 81) Elaborar um programa, em linguagem Java, capaz de receber, em ordem aleatória, o
+	conteúdo de cada elemento de um vetor do tipo double, de tamanho 20, via teclado,
+	executar uma ordenação decrescente do mesmo e apresentar o vetor ordenado em tela.
+	Utilizar uma função de ordenação Merge-Sort.
+	 */
+	
+	public static double[] criarVetorDouble(int a){
+		double [] vetor = new double[a];
+		      
+		for (int i = 0; i < a; i++) {
+			double valores = Double.parseDouble(JOptionPane.showInputDialog("Digite um valor para ser inserido no vetor: ("+i+"/"+a+")"));
+		    vetor[i] = valores;   	  
+		}
+		return vetor;
+	}
+	
+	public static double[]	mergeSortDesordena(double v[])
+    {  
+        if(v.length > 1)
+        {   int t1 = v.length/2;  
+            int t2 = v.length-t1;  
+            double v1[] = new double[t1];  
+            double v2[] = new double[t2];  
+              
+            for(int i = 0; i < t1; i++) 
+            {
+                v1[i] = v[i];
+            }
+            for(int i = t1; i < (t1+t2); i++)
+            {
+                v2[i-t1] = v[i];  
+            }
+            mergeSortDesordena(v1);  
+            mergeSortDesordena(v2);  
+            mergeDesordena(v, v1, v2);
+        }
+        return v;
+    }
+    
+    public static void mergeDesordena(double w[], double w1[], double w2[])
+    {	int	i = 0, j = 0, k = 0;  
+    	
+    	while(w1.length != j && w2.length != k)
+        {  
+        	if(w1[j] <= w2[k])
+            {  
+            	w[i] = w2[k];  
+                i++;  
+                k++;  
+            }
+            else
+            {  
+        		w[i] = w1[j];  
+                i++;  
+                j++; 
+            }  
+        }  
+        while(w1.length != j) 
+        {  
+        	w[i] = w1[j];  
+            i++;  
+            j++;  
+        }  
+        while(w2.length != k)
+        {  
+        	w[i] = w2[k];  
+            i++;  
+            k++;  
+        }  
+    }
+
 }
