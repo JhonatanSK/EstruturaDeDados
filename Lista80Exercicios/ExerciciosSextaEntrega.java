@@ -219,6 +219,96 @@ public class ExerciciosSextaEntrega {
             k++;  
         }  
     }
+	
 
+	/*83) Elaborar um programa, em linguagem Java, capaz de realizar a busca de um
+	determinado caractere, digitado, em um vetor qualquer de tamanho 10, também com seus
+	elementos do tipo char digitados, informando qual o índice do vetor que esse caractere se
+	localiza. Utilizar ordenação do tipo Merge-Sort e busca binária recursiva.*/
+	
+    public static char[] criarVetorChar( int a) {
+		char[] vetor = new char[a];
+		char[] vetorOrdenado = new char[a];
 
+		for (int i = 0; i < a; i++) {
+			String valores = JOptionPane.showInputDialog("Digite um valor para ser inserido no vetor: ("+i+"/"+a+")");
+			char valor = valores.charAt(0);
+			vetor[i] = valor;
+		}
+		
+		vetorOrdenado = mergeSortChar(vetor);
+		return vetorOrdenado;
+		
+	}
+	
+	public static char[] mergeSortChar(char v[])
+    {  
+        if(v.length > 1)
+        {   int t1 = v.length/2;  
+            int t2 = v.length-t1;  
+            char v1[] = new char[t1];  
+            char v2[] = new char[t2];  
+              
+            for(int i = 0; i < t1; i++) 
+            {
+                v1[i] = v[i];
+            }
+            for(int i = t1; i < (t1+t2); i++)
+            {
+                v2[i-t1] = v[i];  
+            }
+            mergeSortChar(v1);  
+            mergeSortChar(v2);  
+            mergeChar(v, v1, v2);
+        }
+        return v;
+    }
+    
+    public static void mergeChar(char w[], char w1[], char w2[])
+    {	int	i = 0, j = 0, k = 0;  
+    	
+    	while(w1.length != j && w2.length != k)
+        {  
+        	if(w1[j] <= w2[k])
+            {  
+        		w[i] = w1[j];  
+                i++;  
+                j++;  
+            }
+            else
+            {  
+            	w[i] = w2[k];  
+                i++;  
+                k++;  
+            }  
+        }  
+        while(w1.length != j) 
+        {  
+        	w[i] = w1[j];  
+            i++;  
+            j++;  
+        }  
+        while(w2.length != k)
+        {  
+        	w[i] = w2[k];  
+            i++;  
+            k++;  
+        }  
+    }  
+    
+    public static int exercicio83(char[] vetor, int baixo, int alto, char posicao) {
+		int meio;
+
+		if (baixo <= alto) {
+			meio = (baixo + alto) / 2;
+			if (posicao < vetor[meio]) {
+				return exercicio83(vetor, baixo, meio - 1, posicao);
+			} else if (posicao > vetor[meio]) {
+				return exercicio83(vetor, meio + 1, alto, posicao);
+			} else {
+				return meio;
+			}
+		}
+		return -1;
+	}
 }
