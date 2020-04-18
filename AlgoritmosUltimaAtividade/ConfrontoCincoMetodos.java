@@ -104,6 +104,26 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
+	//Segundo Método
+	public static void selectionSort(int vetor[], int a) {
+		int posicao;
+		int aux;
+		
+		for(int i = 0; i < a-1; i++) {
+			posicao = i;
+			aux = vetor[i];
+			
+			for(int j = i+1; j < a; j++) {
+				if(vetor[j] > aux) {
+					posicao = j;
+					aux = vetor[j];
+				}
+			}
+			vetor[posicao] = vetor[i];
+			vetor[i] = aux;
+		}
+	}
+	
 	
 	
 }
