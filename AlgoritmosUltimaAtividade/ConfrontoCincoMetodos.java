@@ -140,6 +140,40 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
+	//Quarto Método
+	public static void quickSort(int vetor[], int baixo, int alto) {
+		int p,b,a;
+		int pivot;
+		
+		b = baixo;
+		a = alto;
+		pivot = vetor[baixo];
+		while(baixo < alto) {
+			while((vetor[alto] >= pivot) && (baixo < alto)) { 
+				alto--;
+			}
+				if(baixo != alto) {
+					vetor[baixo] = vetor[alto];
+					baixo++;
+				}
+
+			while((vetor[baixo] <= pivot) && (baixo < alto)) {
+				baixo++;
+			}
+				if(baixo != alto) {
+					vetor[alto] = vetor[baixo];
+					alto--;
+				}
+		}
+		vetor[baixo] = pivot;
+		p = baixo;
+		baixo = b;
+		alto = a;
+		if(baixo < p) quickSort(vetor, baixo, p-1);
+		if(alto > p) quickSort(vetor, p+1, alto);
+	}
+	
+	
 	
 	
 }
