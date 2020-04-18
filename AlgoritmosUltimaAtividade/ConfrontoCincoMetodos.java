@@ -124,6 +124,22 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
+	//Terceiro Método
+	public static void insertionSort(int vetor[]) {
+		int a, b;
+		int t;
+
+		for (a = 1; a < vetor.length; a++) {
+			t = vetor[a];
+			b = a - 1;
+			while (b >= 0 && t < vetor[b]) {
+				vetor[b + 1] = vetor[b];
+				b--;
+			}
+			vetor[b + 1] = t;
+		}
+	}
+	
 	
 	
 }
