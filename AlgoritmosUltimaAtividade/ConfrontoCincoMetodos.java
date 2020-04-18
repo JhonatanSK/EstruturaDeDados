@@ -173,7 +173,59 @@ public class ConfrontoCincoMetodos {
 		if(alto > p) quickSort(vetor, p+1, alto);
 	}
 	
-	
-	
+	//Quinto Método
+	public static void	mergeSort(int v[])
+    {  
+        if(v.length > 1)
+        {   int t1 = v.length/2;  
+            int t2 = v.length-t1;  
+            int v1[] = new int[t1];  
+            int v2[] = new int[t2];  
+              
+            for(int i = 0; i < t1; i++) 
+            {
+                v1[i] = v[i];
+            }
+            for(int i = t1; i < (t1+t2); i++)
+            {
+                v2[i-t1] = v[i];  
+            }
+            mergeSort(v1);  
+            mergeSort(v2);  
+            merge(v, v1, v2);
+        }
+    }
+    
+    public static void merge(int	w[], int w1[], int w2[])
+    {	int	i = 0, j = 0, k = 0;  
+    	
+    	while(w1.length != j && w2.length != k)
+        {  
+        	if(w1[j] <= w2[k])
+            {  
+        		w[i] = w1[j];  
+                i++;  
+                j++;  
+            }
+            else
+            {  
+            	w[i] = w2[k];  
+                i++;  
+                k++;  
+            }  
+        }  
+        while(w1.length != j) 
+        {  
+        	w[i] = w1[j];  
+            i++;  
+            j++;  
+        }  
+        while(w2.length != k)
+        {  
+        	w[i] = w2[k];  
+            i++;  
+            k++;  
+        }  
+    }  
 	
 }
