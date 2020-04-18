@@ -173,7 +173,6 @@ public class ConfrontoCincoMetodos {
 		if(alto > p) quickSort(vetor, p+1, alto);
 	}
 	
-   
 	//Quinto Método
 	public static void	mergeSort(int v[])
     {  
