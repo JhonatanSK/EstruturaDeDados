@@ -62,11 +62,11 @@ public class ConfrontoCincoMetodos {
 		long microseconds5 = (end5 - start5) / 1000;
 		
 		
-		JOptionPane.showMessageDialog(null, "O método Bubble Sort demorou: " + microseconds + " microssegundos  para ser ordenado" +"\n"
-				+ "O método Selection Sort demorou: " + microseconds2 + " microssegundos para ser ordenado \n"
-						+ "O método Insertion Sort demorou: " + microseconds3 + " microssegundos para ser ordenado \n"
-								+ "O método Quick Sort demorou: " + microseconds4 + " microssegundos para ser ordenado \n"
-										+ "O método Merge Sort demorou: " + microseconds5 + " microssegundos para ser ordenado");
+		JOptionPane.showMessageDialog(null, "O mÃ©todo Bubble Sort demorou: " + microseconds + " microssegundos  para ser ordenado" +"\n"
+				+ "O mÃ©todo Selection Sort demorou: " + microseconds2 + " microssegundos para ser ordenado \n"
+						+ "O mÃ©todo Insertion Sort demorou: " + microseconds3 + " microssegundos para ser ordenado \n"
+								+ "O mÃ©todo Quick Sort demorou: " + microseconds4 + " microssegundos para ser ordenado \n"
+										+ "O mÃ©todo Merge Sort demorou: " + microseconds5 + " microssegundos para ser ordenado");
 	}
 
 	public static int[] criarVetor(int a) {
@@ -89,7 +89,7 @@ public class ConfrontoCincoMetodos {
 		return vetorCopiado;
 	}
 	
-	//Primeiro Método
+	//Primeiro MÃ©todo
 	public static void bubbleSort(int vetor[], int tamanho) {
 		int aux;
 		
@@ -104,7 +104,7 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
-	//Segundo Método
+	//Segundo MÃ©todo
 	public static void selectionSort(int vetor[], int a) {
 		int posicao;
 		int aux;
@@ -114,7 +114,7 @@ public class ConfrontoCincoMetodos {
 			aux = vetor[i];
 			
 			for(int j = i+1; j < a; j++) {
-				if(vetor[j] > aux) {
+				if(vetor[j] < aux) {
 					posicao = j;
 					aux = vetor[j];
 				}
@@ -124,7 +124,7 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
-	//Terceiro Método
+	//Terceiro MÃ©todo
 	public static void insertionSort(int vetor[]) {
 		int a, b;
 		int t;
@@ -140,7 +140,7 @@ public class ConfrontoCincoMetodos {
 		}
 	}
 	
-	//Quarto Método
+	//Quarto MÃ©todo
 	public static void quickSort(int vetor[], int baixo, int alto) {
 		int p,b,a;
 		int pivot;
@@ -173,7 +173,7 @@ public class ConfrontoCincoMetodos {
 		if(alto > p) quickSort(vetor, p+1, alto);
 	}
 	
-	//Quinto Método
+	//Quinto MÃ©todo
 	public static void	mergeSort(int v[])
     {  
         if(v.length > 1)
